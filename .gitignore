@@ -11,3 +11,5 @@ bin/
 .gradle
 /build/
 
+*.Zone.Identifier
+*:Zone.Identifier
