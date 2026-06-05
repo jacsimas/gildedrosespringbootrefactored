@@ -1,7 +1,7 @@
-package com.gildedrose;
+package com.example;
 
-import com.gildedrose.model.Item;
-import com.gildedrose.service.InventoryService;
+import com.example.model.Item;
+import com.example.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -9,6 +9,14 @@ import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 class GildedRoseSpringApplicationTests {
+
+
+    AgedBrie agedBrie;
+    DexterityVest dexterityVest;
+    ElixiroftheMongoose elixiroftheMongoose;
+    SulfurasHandofRagnaros sulfurasHandofRagnaros;
+    BackstagePassestoaTAFKAL80ETCconcert backstagePassestoaTAFKAL80ETCconcert;
+    ConjuredManaCake conjuredManaCake;
 
     Item[] items = new Item[] {
             new Item("+5 Dexterity Vest", 10, 20), //
@@ -23,7 +31,7 @@ class GildedRoseSpringApplicationTests {
             new Item("Conjured Mana Cake", 3, 6) };
 
 
-    InventoryService app = new InventoryService();
+    InventoryService app = new InventoryService(agedBrie,  dexterityVest,  elixiroftheMongoose,  sulfurasHandofRagnaros,  backstagePassestoaTAFKAL80ETCconcert,  conjuredManaCake);
 
     @Test
     public void foo() {

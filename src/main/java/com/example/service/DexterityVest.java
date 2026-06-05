@@ -1,7 +1,7 @@
-package com.gildedrose.service;
+package com.example.service;
 
-import com.example.GildedRoseSpring.Abstractions.QualityUpdater;
-import com.example.GildedRoseSpring.model.Item;
+import com.example.Abstractions.QualityUpdater;
+import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
