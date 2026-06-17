@@ -1,7 +1,7 @@
 package com.example;
 
+import com.example.ChainOfResponsibility.*;
 import com.example.model.Item;
-import com.example.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +18,7 @@ public class GildedRoseSpringApplication {
 
 
     @Bean
-    CommandLineRunner run(InventoryService inventoryService) {
+    CommandLineRunner run(ItemsService itemsService) {
         return args -> {
 
             Item[] items = new Item[] {
@@ -34,10 +34,34 @@ public class GildedRoseSpringApplication {
                     new Item("Conjured Mana Cake", 3, 6) };
 
 
-            System.out.println(Arrays.toString(items));
+            System.out.println("                                                    ");
+            System.out.println("                                                    ");
 
-            items = inventoryService.distribute(items);
-            System.out.println(Arrays.toString(items));
+            for (Item eachItem : items){
+                System.out.println(eachItem);
+            }
+
+            System.out.println("                                                    ");
+            System.out.println("====================================================");
+            System.out.println("====================================================");
+            System.out.println("                                                    ");
+
+
+            Chain chain = Chain.link(
+                new DexterityVest(),
+                new AgedBrie(),
+                new ElixiroftheMongoose(),
+                new SulfurasHandofRagnaros(),
+                new BackstagePassestoaTAFKAL80ETCconcert(),
+                new ConjuredManaCake()
+                );
+
+            itemsService.setItemsChain(chain);
+
+            for (Item eachItem : items){
+                itemsService.updateItems(eachItem);
+            }
+
 
         };
     }
