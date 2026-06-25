@@ -4,7 +4,13 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BackstagePassestoaTAFKAL80ETCconcert extends Chain {
+public class BackstagePassestoaTAFKAL80ETCconcert extends ItemHandlerChain {
+
+    ItemHandlerChain next;
+
+    public void setNextHandler(ItemHandlerChain next) {
+        this.next = next;
+    }
 
     @Override
     public boolean updateQuality(Item items) {
@@ -40,7 +46,7 @@ public class BackstagePassestoaTAFKAL80ETCconcert extends Chain {
             return true;
 
         }
-        return checkNext(items);
+        return next.checkNext(items);
 
     }
 

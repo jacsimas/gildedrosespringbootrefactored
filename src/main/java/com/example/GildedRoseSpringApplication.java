@@ -7,8 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
-
 @SpringBootApplication
 public class GildedRoseSpringApplication {
 
@@ -18,7 +16,7 @@ public class GildedRoseSpringApplication {
 
 
     @Bean
-    CommandLineRunner run(ItemsService itemsService) {
+    CommandLineRunner run() {
         return args -> {
 
             Item[] items = new Item[] {
@@ -47,23 +45,31 @@ public class GildedRoseSpringApplication {
             System.out.println("                                                    ");
 
 
-            Chain chain = Chain.link(
-                new DexterityVest(),
-                new AgedBrie(),
-                new ElixiroftheMongoose(),
-                new SulfurasHandofRagnaros(),
-                new BackstagePassestoaTAFKAL80ETCconcert(),
-                new ConjuredManaCake()
-                );
 
-            itemsService.setItemsChain(chain);
+            AgedBrie agedBrie = new AgedBrie();
+            DexterityVest dexterityVest = new DexterityVest();
+            ElixiroftheMongoose elixiroftheMongoose = new ElixiroftheMongoose();
+            SulfurasHandofRagnaros sulfurasHandofRagnaros = new SulfurasHandofRagnaros();
+            BackstagePassestoaTAFKAL80ETCconcert backstagePassestoaTAFKAL80ETCconcert = new BackstagePassestoaTAFKAL80ETCconcert();
+            ConjuredManaCake conjuredManaCake = new ConjuredManaCake();
 
-            for (Item eachItem : items){
-                itemsService.updateItems(eachItem);
+            agedBrie.setNextHandler(dexterityVest);
+            dexterityVest.setNextHandler(elixiroftheMongoose);
+            elixiroftheMongoose.setNextHandler(sulfurasHandofRagnaros);
+            sulfurasHandofRagnaros.setNextHandler(backstagePassestoaTAFKAL80ETCconcert);
+            backstagePassestoaTAFKAL80ETCconcert.setNextHandler(conjuredManaCake);
+            conjuredManaCake.setNextHandler(null);
+
+            for (Item item : items){
+                agedBrie.updateQuality(item);
+                dexterityVest.updateQuality(item);
+                elixiroftheMongoose.updateQuality(item);
+                sulfurasHandofRagnaros.updateQuality(item);
+                backstagePassestoaTAFKAL80ETCconcert.updateQuality(item);
+                conjuredManaCake.updateQuality(item);
             }
 
-
-        };
+            };
     }
 
 

@@ -4,7 +4,13 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ElixiroftheMongoose extends Chain {
+public class ElixiroftheMongoose extends ItemHandlerChain {
+
+    ItemHandlerChain next;
+
+    public void setNextHandler(ItemHandlerChain next) {
+        this.next = next;
+    }
 
 
     @Override
@@ -27,7 +33,7 @@ public class ElixiroftheMongoose extends Chain {
             System.out.println(items);
             return true;
         }
-        return checkNext(items);
+        return next.checkNext(items);
     }
 
 }

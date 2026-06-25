@@ -4,8 +4,13 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DexterityVest extends Chain {
+public class DexterityVest extends ItemHandlerChain {
 
+    ItemHandlerChain next;
+
+    public void setNextHandler(ItemHandlerChain next) {
+        this.next = next;
+    }
 
     @Override
     public boolean updateQuality(Item items){
@@ -26,7 +31,7 @@ public class DexterityVest extends Chain {
             System.out.println(items);
 
             return true;
-        } else   return checkNext(items);
+        } else   return next.checkNext(items);
 
     }
 

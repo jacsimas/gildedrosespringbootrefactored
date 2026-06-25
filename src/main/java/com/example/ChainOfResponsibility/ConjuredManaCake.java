@@ -4,8 +4,13 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConjuredManaCake extends Chain {
+public class ConjuredManaCake extends ItemHandlerChain {
 
+    ItemHandlerChain next;
+
+    public void setNextHandler(ItemHandlerChain next) {
+        this.next = next;
+    }
 
 
     @Override
@@ -27,7 +32,7 @@ public class ConjuredManaCake extends Chain {
             System.out.println(items);
             return true;
         }
-        return checkNext(items);
+        return next.checkNext(items);
     }
 
 }
