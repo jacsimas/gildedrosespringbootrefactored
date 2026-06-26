@@ -13,7 +13,7 @@ public class AgedBrie extends ItemHandlerChain {
     }
 
     @Override
-    public boolean updateQuality(Item items) {
+    public Item updateQuality(Item items) {
 
         if (items.name.equals("Aged Brie")) {
 
@@ -30,8 +30,7 @@ public class AgedBrie extends ItemHandlerChain {
                     items.quality = items.quality + 1;
                 }
             }
-            System.out.println(items);
-            return true;
+            return items;
         }
         return next.checkNext(items);
     }

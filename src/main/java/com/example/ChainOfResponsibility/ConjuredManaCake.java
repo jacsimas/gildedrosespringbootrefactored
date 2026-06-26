@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConjuredManaCake extends ItemHandlerChain {
 
-    ItemHandlerChain next;
 
-    public void setNextHandler(ItemHandlerChain next) {
-        this.next = next;
+
+    public void setNextHandler() {
+
     }
 
 
     @Override
-    public boolean updateQuality(Item items) {
+    public Item updateQuality(Item items) {
 
         if (items.name.equals("Conjured Mana Cake")) {
 
@@ -29,10 +29,10 @@ public class ConjuredManaCake extends ItemHandlerChain {
                     items.quality = items.quality - 1;
                 }
             }
-            System.out.println(items);
-            return true;
+
         }
-        return next.checkNext(items);
+        return items;
+
     }
 
 }

@@ -12,12 +12,12 @@ public abstract class ItemHandlerChain {
         this.next = next;
     }
 
-    public abstract boolean updateQuality(Item items);
+    public abstract Item updateQuality(Item items);
 
-    public boolean checkNext(Item items){
+    public Item checkNext(Item items){
 
         if(next == null){
-            return true;
+            return items;
         }
         return next.updateQuality(items);
     }

@@ -13,7 +13,7 @@ public class DexterityVest extends ItemHandlerChain {
     }
 
     @Override
-    public boolean updateQuality(Item items){
+    public Item updateQuality(Item items){
 
         if (items.name.equals("+5 Dexterity Vest")) {
 
@@ -28,9 +28,8 @@ public class DexterityVest extends ItemHandlerChain {
                     items.quality = items.quality - 1;
                 }
             }
-            System.out.println(items);
+            return items;
 
-            return true;
         } else   return next.checkNext(items);
 
     }

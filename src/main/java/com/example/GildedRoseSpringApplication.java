@@ -58,15 +58,19 @@ public class GildedRoseSpringApplication {
             elixiroftheMongoose.setNextHandler(sulfurasHandofRagnaros);
             sulfurasHandofRagnaros.setNextHandler(backstagePassestoaTAFKAL80ETCconcert);
             backstagePassestoaTAFKAL80ETCconcert.setNextHandler(conjuredManaCake);
-            conjuredManaCake.setNextHandler(null);
+            conjuredManaCake.setNextHandler();
 
             for (Item item : items){
-                agedBrie.updateQuality(item);
-                dexterityVest.updateQuality(item);
-                elixiroftheMongoose.updateQuality(item);
-                sulfurasHandofRagnaros.updateQuality(item);
-                backstagePassestoaTAFKAL80ETCconcert.updateQuality(item);
-                conjuredManaCake.updateQuality(item);
+                item = agedBrie.updateQuality(item);
+                item = dexterityVest.updateQuality(item);
+                item = elixiroftheMongoose.updateQuality(item);
+                item = sulfurasHandofRagnaros.updateQuality(item);
+                item = backstagePassestoaTAFKAL80ETCconcert.updateQuality(item);
+                item = conjuredManaCake.updateQuality(item);
+            }
+
+            for (Item eachItem : items){
+                System.out.println(eachItem);
             }
 
             };

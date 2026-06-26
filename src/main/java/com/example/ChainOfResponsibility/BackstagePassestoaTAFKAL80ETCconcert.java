@@ -13,7 +13,7 @@ public class BackstagePassestoaTAFKAL80ETCconcert extends ItemHandlerChain {
     }
 
     @Override
-    public boolean updateQuality(Item items) {
+    public Item updateQuality(Item items) {
 
         if (items.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
 
@@ -42,8 +42,8 @@ public class BackstagePassestoaTAFKAL80ETCconcert extends ItemHandlerChain {
                 items.quality = items.quality - items.quality;
             }
 
-            System.out.println(items);
-            return true;
+            return items;
+
 
         }
         return next.checkNext(items);

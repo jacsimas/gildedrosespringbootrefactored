@@ -13,10 +13,9 @@ public class SulfurasHandofRagnaros extends ItemHandlerChain {
     }
 
     @Override
-    public boolean updateQuality(Item items) {
+    public Item updateQuality(Item items) {
         if (items.name.equals("Sulfuras, Hand of Ragnaros")) {
-            System.out.println(items);
-            return true;
+            return items;
         }
         return next.checkNext(items);
     }

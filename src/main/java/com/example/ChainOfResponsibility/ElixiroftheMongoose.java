@@ -14,7 +14,7 @@ public class ElixiroftheMongoose extends ItemHandlerChain {
 
 
     @Override
-    public boolean updateQuality(Item items) {
+    public Item updateQuality(Item items) {
 
         if (items.name.equals("Elixir of the Mongoose")) {
 
@@ -30,8 +30,8 @@ public class ElixiroftheMongoose extends ItemHandlerChain {
                 }
             }
 
-            System.out.println(items);
-            return true;
+            return items;
+
         }
         return next.checkNext(items);
     }
