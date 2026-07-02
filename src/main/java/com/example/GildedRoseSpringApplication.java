@@ -14,6 +14,12 @@ public class GildedRoseSpringApplication {
 		SpringApplication.run(GildedRoseSpringApplication.class, args);
 	}
 
+    public  <T>  void printItems(T[] items){
+        for (T eachItem : items){
+            System.out.println(eachItem);
+        }
+    }
+
 
     @Bean
     CommandLineRunner run() {
@@ -35,9 +41,7 @@ public class GildedRoseSpringApplication {
             System.out.println("                                                    ");
             System.out.println("                                                    ");
 
-            for (Item eachItem : items){
-                System.out.println(eachItem);
-            }
+            printItems(items);
 
             System.out.println("                                                    ");
             System.out.println("====================================================");
@@ -58,24 +62,28 @@ public class GildedRoseSpringApplication {
             elixiroftheMongoose.setNextHandler(sulfurasHandofRagnaros);
             sulfurasHandofRagnaros.setNextHandler(backstagePassestoaTAFKAL80ETCconcert);
             backstagePassestoaTAFKAL80ETCconcert.setNextHandler(conjuredManaCake);
-            conjuredManaCake.setNextHandler();
+            conjuredManaCake.setNextHandler(null);
 
             for (Item item : items){
-                item = agedBrie.updateQuality(item);
-                item = dexterityVest.updateQuality(item);
-                item = elixiroftheMongoose.updateQuality(item);
-                item = sulfurasHandofRagnaros.updateQuality(item);
-                item = backstagePassestoaTAFKAL80ETCconcert.updateQuality(item);
-                item = conjuredManaCake.updateQuality(item);
+                agedBrie.updateQuality(item);
             }
 
-            for (Item eachItem : items){
-                System.out.println(eachItem);
-            }
+            printItems(items);
 
             };
     }
 
-
 }
+
+/*
++5 Dexterity Vest, 9, 19
+Aged Brie, 1, 1
+Elixir of the Mongoose, 4, 6
+Sulfuras, Hand of Ragnaros, 0, 80
+Sulfuras, Hand of Ragnaros, -1, 80
+Backstage passes to a TAFKAL80ETC concert, 14, 21
+Backstage passes to a TAFKAL80ETC concert, 9, 50
+Backstage passes to a TAFKAL80ETC concert, 4, 50
+Conjured Mana Cake, 2, 5
+ */
 

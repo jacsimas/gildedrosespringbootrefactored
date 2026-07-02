@@ -4,17 +4,11 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConjuredManaCake extends ItemHandlerChain {
-
-
-
-    public void setNextHandler() {
-
-    }
+public class ConjuredManaCake implements ItemHandlerChain {
 
 
     @Override
-    public Item updateQuality(Item items) {
+    public void updateQuality(Item items) {
 
         if (items.name.equals("Conjured Mana Cake")) {
 
@@ -31,8 +25,6 @@ public class ConjuredManaCake extends ItemHandlerChain {
             }
 
         }
-        return items;
-
     }
 
 }

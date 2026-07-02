@@ -4,16 +4,17 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AgedBrie extends ItemHandlerChain {
+public class AgedBrie implements ItemHandlerChain {
 
-    ItemHandlerChain next;
+    public ItemHandlerChain next;
 
+    @Override
     public void setNextHandler(ItemHandlerChain next) {
         this.next = next;
     }
 
     @Override
-    public Item updateQuality(Item items) {
+    public void updateQuality(Item items) {
 
         if (items.name.equals("Aged Brie")) {
 
@@ -30,10 +31,11 @@ public class AgedBrie extends ItemHandlerChain {
                     items.quality = items.quality + 1;
                 }
             }
-            return items;
         }
-        return next.checkNext(items);
-    }
+        else if (next != null) {
+            next.updateQuality(items);
+        }
 
+    }
 
 }

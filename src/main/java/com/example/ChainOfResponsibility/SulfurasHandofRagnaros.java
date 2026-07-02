@@ -4,20 +4,22 @@ import com.example.model.Item;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SulfurasHandofRagnaros extends ItemHandlerChain {
+public class SulfurasHandofRagnaros implements ItemHandlerChain {
 
     ItemHandlerChain next;
 
+    @Override
     public void setNextHandler(ItemHandlerChain next) {
         this.next = next;
     }
 
     @Override
-    public Item updateQuality(Item items) {
+    public void updateQuality(Item items) {
         if (items.name.equals("Sulfuras, Hand of Ragnaros")) {
-            return items;
         }
-        return next.checkNext(items);
+        else if (next != null) {
+            next.updateQuality(items);
+        }
     }
 
 }

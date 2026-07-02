@@ -1,25 +1,13 @@
 package com.example.ChainOfResponsibility;
 
 import com.example.model.Item;
-import org.springframework.stereotype.Service;
 
-@Service
-public abstract class ItemHandlerChain {
+public interface ItemHandlerChain {
 
-    private ItemHandlerChain next;
 
-    public void setNextHandler(ItemHandlerChain next){
-        this.next = next;
+    default void setNextHandler(ItemHandlerChain next){
     }
 
-    public abstract Item updateQuality(Item items);
-
-    public Item checkNext(Item items){
-
-        if(next == null){
-            return items;
-        }
-        return next.updateQuality(items);
-    }
+    void updateQuality(Item items);
 
 }
