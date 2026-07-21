@@ -21,14 +21,12 @@ public class ElixiroftheMongooseHandlerTest {
     public void item_is_modified_when_the_name_equals_ElexiroftheMongoose() {
 
         ElixiroftheMongoose elixiroftheMongooseHandler = new ElixiroftheMongoose();
-        Item expected = new Item("Elixir of the Mongoose", 5, 7);
+        Item item = new Item("Elixir of the Mongoose", 5, 7);
 
-        Item actual = new Item("Elixir of the Mongoose", 4, 6);
+        elixiroftheMongooseHandler.updateQuality(item);
 
-        elixiroftheMongooseHandler.updateQuality(expected);
-
-        assertEquals(expected.toString(), actual.toString());;
-
+        assertEquals(item.sellIn, 4);;
+        assertEquals(item.quality, 6);;
     }
 
     @Test

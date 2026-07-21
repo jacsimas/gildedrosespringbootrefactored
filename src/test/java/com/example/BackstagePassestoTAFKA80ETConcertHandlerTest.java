@@ -21,13 +21,13 @@ public class BackstagePassestoTAFKA80ETConcertHandlerTest {
     void item_is_modified_when_the_name_equals_BackstagePassestoTAFKA80ETCconcert() {
 
         BackstagePassestoaTAFKAL80ETCconcert backstagePassestoaTAFKAL80ETCconcertHandler = new BackstagePassestoaTAFKAL80ETCconcert();
-        Item expected = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
 
-        Item actual = new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21);
+        backstagePassestoaTAFKAL80ETCconcertHandler.updateQuality(item);
 
-        backstagePassestoaTAFKAL80ETCconcertHandler.updateQuality(expected);
+        assertEquals(item.sellIn, 14);;
+        assertEquals(item.quality, 21);;
 
-        assertEquals(expected.toString(), actual.toString());;
     }
 
     @Test

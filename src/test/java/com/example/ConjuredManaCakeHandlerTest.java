@@ -21,13 +21,12 @@ public class ConjuredManaCakeHandlerTest {
     public void item_is_modified_when_the_name_equals_ConjuredManaCake() {
 
         ConjuredManaCake conjuredManaCakeHandler = new ConjuredManaCake();
-        Item expected = new Item("Conjured Mana Cake", 3, 6);
+        Item item = new Item("Conjured Mana Cake", 3, 6);
 
-        Item actual = new Item("Conjured Mana Cake", 2, 5);
+        conjuredManaCakeHandler.updateQuality(item);
 
-        conjuredManaCakeHandler.updateQuality(expected);
-
-        assertEquals(expected.toString(), actual.toString());;
+        assertEquals(item.sellIn, 2);;
+        assertEquals(item.quality, 5);;
 
     }
 

@@ -21,13 +21,12 @@ public class SulfurasHandOfRagnarosHandlerTest {
     public void item_is_modified_when_the_name_equals_HandOfRagnaros() {
 
         SulfurasHandofRagnaros sulfurasHandofRagnarosHandler = new SulfurasHandofRagnaros();
-        Item expected = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
+        Item item = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
 
-        Item actual = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
+        sulfurasHandofRagnarosHandler.updateQuality(item);
 
-        sulfurasHandofRagnarosHandler.updateQuality(expected);
-
-        assertEquals(expected.toString(), actual.toString());;
+        assertEquals(item.sellIn, 0);;
+        assertEquals(item.quality, 80);;
 
     }
 

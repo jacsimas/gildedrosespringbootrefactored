@@ -31,13 +31,14 @@ public class AgedBrieHandlerTest {
     public void item_is_modified_when_the_name_equals_AgedBrie() {
 
         AgedBrie agedBrieHandler = new AgedBrie();
-        Item expected = new Item("Aged Brie", 2, 0);
+        Item item = new Item("Aged Brie", 2, 0);
 
         Item actual = new Item("Aged Brie", 1, 1);
 
-        agedBrieHandler.updateQuality(expected);
+        agedBrieHandler.updateQuality(item);
 
-        assertEquals(expected.toString(), actual.toString());;
+        assertEquals(item.sellIn, 1);;
+        assertEquals(item.quality, 1);;
     }
 
     @Test

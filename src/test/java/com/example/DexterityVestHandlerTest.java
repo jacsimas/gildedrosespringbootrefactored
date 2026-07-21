@@ -21,14 +21,12 @@ public class DexterityVestHandlerTest {
     public void item_is_modified_when_the_name_equals_DexterityVest() {
 
         DexterityVest dexterityVestHandler = new DexterityVest();
-        Item expected =  new Item("+5 Dexterity Vest", 10, 20);
+        Item item =  new Item("+5 Dexterity Vest", 10, 20);
 
-        Item actual = new Item("+5 Dexterity Vest", 9, 19);
+        dexterityVestHandler.updateQuality(item);
 
-        dexterityVestHandler.updateQuality(expected);
-
-        assertEquals(expected.toString(), actual.toString());;
-
+        assertEquals(item.sellIn, 9);;
+        assertEquals(item.quality, 19);;
     }
 
     @Test
